@@ -1,32 +1,32 @@
-const http = require('http');
+const express = require('express');
 
 const hostname = '0.0.0.0';
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  // let url = req.url;
+const server = express();
 
-  let {url} = req;
+server.get("/", (req, res) => {
+  res.type('html');
+  res.status(200); // OK
+  res.end("Home");
+})
 
-  switch (url) {
-    case "/":
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Home');
-      break;
+server.get("/posts", (req, res) => {
+  res.type('html');
+  res.status(200); // OK
+  res.end("Liste des articles");
+})
 
-    case "/posts":
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Liste des articles');
-      break;
-  
-    default:
-      break;
-  }
+server.get("/posts/:id_post", (req, res) => {
+  res.type('html');
+  res.status(200); // OK
+  res.end(`Àrticle : ${req.params.id_post}`);
+})
 
-  
-
-});
+server.post("/posts", (req, res) => {
+  res.type('html');
+  res.status(201); // Created
+  res.end("Article crée");
+})
 
 server.listen(port, hostname);
