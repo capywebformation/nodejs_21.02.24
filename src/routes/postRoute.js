@@ -5,8 +5,8 @@ module.exports = (server) => {
         .get(postController.listAllPosts)
         .post(postController.createAPost);
 
-    // server.route('/posts/:id_post')
-    //     .get(postController.getAPost)
-    //     .put(postController.updateAPost)
-    //     .delete(postController.deleteAPost);
+    server.route('/posts/:id_post')
+        .get(postController.getAPost)
+        .put(postController.updateAPost)
+        .delete(postController.deleteAPost);
 }

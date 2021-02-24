@@ -29,3 +29,56 @@ exports.createAPost = (req, res) => {
         }
     });
 }
+
+exports.getAPost = (req, res) => {
+    Post.findById(req.params.id_post, (error, post) => {
+        if (error) {
+            res.status(500);
+            console.log(error);
+            res.json({
+                message: "Erreur serveur."
+            });
+        } else {
+            res.status(200);
+            res.json(post);
+        }
+    })
+}
+
+exports.updateAPost = (req, res) => {
+    Post.findOneAndUpdate({
+        _id: req.params.id_post
+    }, req.body, {
+        new: true
+    }, (error, post) => {
+        if (error) {
+            res.status(500);
+            console.log(error);
+            res.json({
+                message: "Erreur serveur."
+            });
+        } else {
+            res.status(200);
+            res.json(post);
+        }
+    })
+}
+
+exports.deleteAPost = (req, res) => {
+    Post.remove({
+        _id: req.params.id_post
+    }, (error) => {
+        if (error) {
+            res.status(500);
+            console.log(error);
+            res.json({
+                message: "Erreur serveur."
+            });
+        } else {
+            res.status(200);
+            res.json({
+                message: "Article supprimé"
+            });
+        }
+    })
+}
