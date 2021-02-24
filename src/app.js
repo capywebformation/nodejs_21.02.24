@@ -15,4 +15,7 @@ server.use(bodyParser.json());
 const postRoute = require('./routes/postRoute');
 postRoute(server);
 
+const commentRoute = require('./routes/commentRoute');
+commentRoute(server);
+
 server.listen(port, hostname);
