@@ -27,3 +27,6 @@ docker-compose logs -f
 ```
 docker-compose exec node /bin/sh
 ```
+
+## Env file
+Copy .env.sample to .env and add a key for jwt

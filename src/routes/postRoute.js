@@ -1,4 +1,5 @@
 const postController = require('../controllers/postController');
+const jwtMiddleware = require('../middleware/jwtMiddleware');
 
 module.exports = (server) => {
     server.route('/posts')
@@ -8,5 +9,5 @@ module.exports = (server) => {
     server.route('/posts/:id_post')
         .get(postController.getAPost)
         .put(postController.updateAPost)
-        .delete(postController.deleteAPost);
+        .delete(jwtMiddleware.verifyToken, postController.deleteAPost);
 }

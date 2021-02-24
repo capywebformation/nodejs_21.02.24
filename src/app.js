@@ -18,4 +18,7 @@ postRoute(server);
 const commentRoute = require('./routes/commentRoute');
 commentRoute(server);
 
+const userRoute = require('./routes/userRoute');
+userRoute(server);
+
 server.listen(port, hostname);
